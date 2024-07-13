@@ -11,6 +11,8 @@ node {
             script {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                        echo "GIT_USERNAME: ${env.GIT_USERNAME}"
+                        echo "GIT_PASSWORD: ${env.GIT_PASSWORD}"
                         //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
                         sh "git config user.email kushal.sankhe@citiuscloud.com"
                         sh "git config user.name Kushal-Sankhe"
